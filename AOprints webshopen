@@ -43,13 +43,3 @@ async function checkout() {
   const data = await res.json();
   window.location.href = data.url;
 }
-<!doctype html>
-<html lang="sv">
-<head>
-  <meta charset="utf-8" />
-  <title>Min hemsida</title>
-</head>
-<body>
-  <h1>Hej! Min sida är live 🎉</h1>
-</body>
-</html>
