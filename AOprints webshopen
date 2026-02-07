@@ -1,0 +1,45 @@
+webshop/
+├─ index.html
+├─ success.html
+├─ cancel.html
+├─ css/
+│  └─ style.css
+├─ js/
+│  ├─ app.js
+│  └─ checkout.js
+└─ assets/
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Min Webshop</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>🛒 Min Webshop</h1>
+
+<div class="product">
+  <h2>T-shirt</h2>
+  <p>199 kr</p>
+  <button onclick="checkout()">Till kassan</button>
+</div>
+
+<script src="js/checkout.js"></script>
+</body>
+</html>
+body {
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+}
+button {
+  padding: 10px;
+}
+async function checkout() {
+  const res = await fetch(
+    "https://DIN-VERCEL-APP.vercel.app/api/create-checkout-session",
+    { method: "POST" }
+  );
+  const data = await res.json();
+  window.location.href = data.url;
+}
